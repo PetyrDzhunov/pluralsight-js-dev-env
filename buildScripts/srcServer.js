@@ -4,14 +4,16 @@ import open from 'open';
 import config from '../webpack.config.dev';
 import webpack from 'webpack';
 
+/* eslint-disable no-console */
+
 const port = 3000;
 const app = express();
 const compiler = webpack(config);
 
 app.use(
   require('webpack-dev-middleware')(compiler, {
-    publicPath: config.output.publicPath,
-  }),
+    publicPath: config.output.publicPath
+  })
 );
 
 app.get('/', function (req, res) {
